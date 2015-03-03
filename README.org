@@ -1,0 +1,33 @@
+#+TITLE: dns.js
+
+** What?
+
+A client-side DNS resolver. (Or server-side, but it's not really the best option for that.)
+
+** Why?
+
+I felt like it.
+
+** How?
+
+*** How does it work?
+
+I had hopes of being able to talk DNS directly over TCP, but browsers can't do that, because it would be a security nightmare. Fortunately, there's a thing called [[https://github.com/fcambus/rrda][RRDA]], and a (currently) free and non-rate-limited instance of it hosted by [[http://www.statdns.com/api/][StatDNS]]. So this talks to that, instead.
+
+*** How do I use it?
+
+Install it as a dependency with NPM (to run it server side) or Component (to run it client side).
+
+Require it.
+
+Call it:
+#+BEGIN_SRC 
+resolve('aaron-miller.me', 'a', function(err, dnsResponse) {
+  if (err) throw err;
+  doSomethingWith(dnsResponse);
+});
+#+END_SRC
+
+=dnsResponse= is just the complete result from StatDNS, in the format documented there. If the domain doesn't exist, =err= will have a code property of =NXDOMAIN=. Other errors are passed through verbatim.
+
+Right now, the only example is [[test/hello-world.js]]. More coming eventually.
