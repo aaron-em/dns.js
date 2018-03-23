@@ -1,7 +1,7 @@
 {
   "name": "dns.js",
   "repo": "aaron-em/dns.js",
-  "description": "recursive DNS resolver on the client side",
+  "description": "recursive DNS resolver using statDNS API",
   "version": "0.0.1",
   "keywords": [
     "tcp",
