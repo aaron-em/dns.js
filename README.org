@@ -2,7 +2,8 @@
 
 ** What?
 
-A client-side DNS resolver. (Or server-side, but it's not really the best option for that.)
+A client-side DNS resolver using the statDNS. (Also usable on server-side, but
+it's not really the best option for that.)
 
 ** Why?
 
@@ -12,7 +13,7 @@ I felt like it.
 
 *** How does it work?
 
-I had hopes of being able to talk DNS directly over TCP, but browsers can't do that, because it would be a security nightmare. Fortunately, there's a thing called [[https://github.com/fcambus/rrda][RRDA]], and a (currently) free and non-rate-limited instance of it hosted by [[http://www.statdns.com/api/][StatDNS]]. So this talks to that, instead.
+I had hopes of being able to talk DNS directly over TCP, but browsers can't do that, because it would be a security nightmare. Fortunately, there's a thing called [[https://github.com/fcambus/rrda][RRDA]], and a (currently) free and non-rate-limited instance of it hosted by [[http://www.statdns.com/api/][StatDNS]]. So this talks to that, instead, and may leak data this way, possibly violating you user's privacy.
 
 *** How do I use it?
 
